@@ -1,0 +1,49 @@
+
+<header>
+<h1> Protótipo: Criptografando Letras</h1>
+<p><strong>Conteúdo:</strong> Introdução à Criptografia e Cifra de César.</p>
+</header>
+<section>
+<h2> O que é Criptografia de Letras?</h2>
+<p>A criptografia é a arte de codificar informações para que apenas o
+destinatário correto consiga lê-las. Um dos métodos mais antigos e simples é a
+<strong>Cifra de César</strong> (ou cifra de substituição).</p>
+<p><strong>Como funciona?</strong> Cada letra do texto original é deslocada um
+número fixo de posições no alfabeto. Neste protótipo, estamos utilizando um deslocamento
+fixo de <strong>3 posições</strong> (A vira D, B vira E, C vira F, etc.).</p>
+</section>
+<div class="interactive-box">
+<h2> Teste o Protótipo em Tempo Real</h2>
+<p>Digite uma palavra em letras maiúsculas abaixo para ver a substituição
+acontecendo na prática:</p>
+<input type="text" id="inputText" placeholder="DIGITE AQUI (EX: TEXTO)"
+style="text-transform: uppercase;">
+<button onclick="criptografar()">Criptografar Mensagem</button>
+<div id="output" class="result" style="display: none;">
+Texto Criptografado: <span id="outputText"></span>
+</div>
+</div>
+<section>
+<h2> Explicação do Código Desenvolvido</h2>
+<p>Para fazer este protótipo funcionar, utilizamos uma lógica simples em
+JavaScript:</p>
+<ul>
+<li>Capturamos o valor do campo de entrada usando
+<code>document.getElementById</code>.</li>
+<li>Percorremos cada letra do texto digitado através de um laço de repetição
+(<code>for</code>).</li>
+<li>Convertemos a letra para seu código numérico (ASCII), somamos <code>3</
+code> posições, e transformamos o número de volta em caractere.</li>
+<li>Exibimos o resultado dinamicamente na tela alterando a propriedade
+<code>innerText</code> do elemento de saída.</li>
+</ul>
+</section>
+<script>
+function criptografar() {
+const input = document.getElementById('inputText').value.toUpperCase();
+let resultado = '';
+for (let i = 0; i < input.length; i++) {
+let codigo = input.charCodeAt(i);
+// Verifica se o caractere é uma letra de A-Z
+if (codigo >= 65 && codigo <= 90) {
+// Aplica o deslocamento de 3 posições e trata a rotação do alfabeto
